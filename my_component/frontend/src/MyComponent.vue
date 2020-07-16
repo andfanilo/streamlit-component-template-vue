@@ -1,18 +1,30 @@
 <template>
   <div class="wrapper">
-    <h1>Hello Streamlit</h1>
+    <span>
+      Hello, Streamlit! &nbsp;
+      <button v-on:click="onClicked()">Click Me!</button>
+    </span>
   </div>
 </template>
 
 <script>
 import Vue from "vue";
-import { withStreamlitConnection, Streamlit } from "./streamlit";
+import { Streamlit } from "./streamlit";
 
-const MyComponent = Vue.extend({
-  name: "MyComponent"
-});
-
-export default withStreamlitConnection(MyComponent);
+export default {
+  name: "MyComponent",
+  data() {
+    return {
+      numClicks: 0
+    };
+  },
+  methods: {
+    onClicked: function() {
+      this.numClicks++;
+      Streamlit.setComponentValue(this.numClicks);
+    }
+  }
+};
 </script>
 
 <style scoped>
