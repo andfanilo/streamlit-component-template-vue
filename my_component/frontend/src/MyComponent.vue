@@ -1,45 +1,18 @@
 <template>
-  <div class="st">
+  <div class="wrapper">
     <h1>Hello Streamlit</h1>
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from "vue";
-import { withStreamlitConnection, Streamlit, RenderData } from "./streamlit";
+import { withStreamlitConnection, Streamlit } from "./streamlit";
 
 const MyComponent = Vue.extend({
-  name: "MyComponent",
-  methods: {
-    onRenderEvent: function(event: Event) {
-      const data = (event as CustomEvent<RenderData>).detail;
-      console.log(data);
-      Streamlit.setComponentValue(data.args.value);
-      Streamlit.setFrameHeight();
-    },
-  },
-  mounted() {
-    Streamlit.events.addEventListener(
-      Streamlit.RENDER_EVENT,
-      this.onRenderEvent
-    );
-    Streamlit.setComponentReady();
-    Streamlit.setFrameHeight();
-  },
-  updated() {
-    if (this.componentError != null) {
-      Streamlit.setFrameHeight();
-    }
-  },
-  destroyed() {
-    Streamlit.events.removeEventListener(
-      Streamlit.RENDER_EVENT,
-      this.onRenderEvent
-    );
-  },
+  name: "MyComponent"
 });
 
-export default MyComponent;
+export default withStreamlitConnection(MyComponent);
 </script>
 
 <style scoped>

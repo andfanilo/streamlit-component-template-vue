@@ -17,11 +17,35 @@ export interface ComponentProps {
 }
 
 export function withStreamlitConnection(
-  component: Vue.Component
+  WrappedComponent: Vue.Component
 ): Vue.Component {
-  return Vue.component("withStreamlitConnection", {
+  return Vue.extend({
     render(createElement) {
-      return createElement(component);
+      return createElement(WrappedComponent);
+    },
+    methods: {
+      onRenderEvent: function(event: Event) {
+        const data = (event as CustomEvent<RenderData>).detail;
+        Streamlit.setComponentValue(data.args.value);
+        Streamlit.setFrameHeight();
+      },
+    },
+    mounted() {
+      Streamlit.events.addEventListener(
+        Streamlit.RENDER_EVENT,
+        this.onRenderEvent
+      );
+      Streamlit.setComponentReady();
+      Streamlit.setFrameHeight();
+    },
+    updated() {
+      Streamlit.setFrameHeight();
+    },
+    destroyed() {
+      Streamlit.events.removeEventListener(
+        Streamlit.RENDER_EVENT,
+        this.onRenderEvent
+      );
     },
   });
 }
