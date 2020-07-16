@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-    <StreamlitVue />
+    <MyComponent />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import StreamlitVue from "./streamlit/StreamlitVue.vue";
+import MyComponent from "./MyComponent.vue";
 
 export default Vue.extend({
   name: "App",
   components: {
-    StreamlitVue,
+    MyComponent,
   },
 });
 </script>

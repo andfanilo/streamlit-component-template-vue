@@ -6,10 +6,10 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { Streamlit, RenderData } from "./streamlit";
+import { withStreamlitConnection, Streamlit, RenderData } from "./streamlit";
 
-export default Vue.extend({
-  name: "StreamlitVue",
+const MyComponent = Vue.extend({
+  name: "MyComponent",
   methods: {
     onRenderEvent: function(event: Event) {
       const data = (event as CustomEvent<RenderData>).detail;
@@ -38,6 +38,8 @@ export default Vue.extend({
     );
   },
 });
+
+export default MyComponent;
 </script>
 
 <style scoped>
