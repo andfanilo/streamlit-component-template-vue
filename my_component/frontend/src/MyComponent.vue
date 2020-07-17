@@ -8,7 +8,8 @@
 </template>
 
 <script>
-import { Streamlit } from "./streamlit/streamlit";
+import { Streamlit } from "./streamlit";
+
 export default {
   name: "MyComponent",
   props: ["args"],

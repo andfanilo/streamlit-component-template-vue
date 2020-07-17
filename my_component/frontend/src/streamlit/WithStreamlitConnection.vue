@@ -4,21 +4,20 @@
   </div>
 </template>
 
-
-<script>
-import { Streamlit } from "./streamlit";
+<script lang="ts">
+import { Streamlit, RenderData } from "./streamlit";
 
 export default {
-  name: "StreamlitVue",
+  name: "withStreamlitConnection",
   data() {
     return {
-      renderData: undefined,
-      componentError: undefined
+      renderData: undefined as RenderData,
+      componentError: undefined as Error
     };
   },
   methods: {
     onRenderEvent: function(event) {
-      const renderEvent = event;
+      const renderEvent = event as CustomEvent<RenderData>;
       this.renderData = renderEvent.detail;
     }
   },
@@ -39,8 +38,8 @@ export default {
       this.onRenderEvent
     );
   },
-  errorCaptured(error) {
-    this.errorCaptured = componentError;
+  errorCaptured(err) {
+    this.componentError = err;
   }
 };
 </script>

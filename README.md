@@ -1,5 +1,7 @@
 # Streamlit Component template in Vue.js
 
+A Vue.js scoped slot which listens for Streamlit RENDER_EVENT and pass RenderData as `args` props to your component.
+
 ## Setup
 
 Follow the [Component template Quickstart](https://github.com/streamlit/component-template#quickstart)
