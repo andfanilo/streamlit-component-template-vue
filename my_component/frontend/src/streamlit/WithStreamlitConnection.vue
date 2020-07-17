@@ -1,6 +1,10 @@
 <template>
   <div>
-    <slot :args="renderData.args" :disabled="renderData.disabled"></slot>
+    <div v-if="componentError != null">
+      <h1 class="err__title">Component Error</h1>
+      <div class="err__msg">{{componentError}}</div>
+    </div>
+    <slot v-else-if="renderData != null" :args="renderData.args" :disabled="renderData.disabled"></slot>
   </div>
 </template>
 
@@ -38,8 +42,16 @@ export default {
       this.onRenderEvent
     );
   },
-  errorCaptured(err) {
+  errorCaptured(err, vm, info = "") {
     this.componentError = err;
+    this.renderData = undefined;
   }
 };
 </script>
+
+<style scoped>
+.err__title,
+.err__msg {
+  margin: 0;
+}
+</style>
