@@ -13,3 +13,6 @@ Follow the [Component template Quickstart](https://github.com/streamlit/componen
 - [Single File Components](https://vuejs.org/v2/guide/single-file-components.html)
 - [SFC Spec](https://vue-loader.vuejs.org/spec.html)
 - [createElement Arguments](https://vuejs.org/v2/guide/render-function.html#createElement-Arguments)
+- [Scoped slots](https://vuejs.org/v2/guide/components-slots.html#Scoped-Slots)
+- [Using Slots in Vue.js](https://www.smashingmagazine.com/2019/07/using-slots-vue-js/)
+- [Render Functions](https://vuejs.org/v2/guide/render-function.html)
