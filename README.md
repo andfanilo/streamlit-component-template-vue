@@ -1,10 +1,41 @@
 # Streamlit Component template in Vue.js
 
-A Vue.js scoped slot which listens for Streamlit RENDER_EVENT and pass RenderData as `args` props to your component.
+A Vue.js scoped slot which parameters from Streamlit Python script in `args` props of your component.
 
 ## Setup
 
-Follow the [Component template Quickstart](https://github.com/streamlit/component-template#quickstart)
+[Copy paste](https://github.com/streamlit/component-template#quickstart) of the original component-template quickstart.
+
+- Ensure you have [Python 3.6+](https://www.python.org/downloads/), [Node.js](https://nodejs.org), and [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) installed.
+- Clone this repo.
+- Create a new Python virtual environment for the template:
+
+```
+$ python3 -m venv venv  # create venv
+$ . venv/bin/activate   # activate venv
+$ pip install streamlit # install streamlit
+```
+
+- Initialize and run the component template frontend:
+
+```
+$ cd my_component/frontend
+$ npm install    # Install npm dependencies
+$ npm run start  # Start the Webpack dev server
+```
+
+- From a separate terminal, run the template's Streamlit app:
+
+```
+$ . venv/bin/activate  # activate the venv you created earlier
+$ streamlit run my_component/__init__.py  # run the example
+```
+
+- If all goes well, you should see something like this:
+  ![Quickstart Success](quickstart.png)
+- Modify the frontend code at `my_component/frontend/src/MyComponent.vue`.
+  - Parameters passed by Python script are made available in `args` props.
+- Modify the Python code at `my_component/__init__.py`.
 
 ## Resources
 
