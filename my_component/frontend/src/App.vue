@@ -1,20 +1,19 @@
 <template>
   <div id="app">
-    <MyComponent />
+    <with-streamlit-connection v-slot="{ args }">
+      <MyComponent :args="args" />
+    </with-streamlit-connection>
   </div>
 </template>
 
 <script>
-import Vue from "vue";
 import MyComponent from "./MyComponent.vue";
-import { withStreamlitConnection } from "./streamlit";
+import StreamlitVue from "./streamlit/StreamlitVue.vue";
 
-export default Vue.extend({
+export default {
   name: "App",
-  components: {
-    MyComponent: withStreamlitConnection(MyComponent)
-  }
-});
+  components: { MyComponent, "with-streamlit-connection": StreamlitVue }
+};
 </script>
 
 <style>

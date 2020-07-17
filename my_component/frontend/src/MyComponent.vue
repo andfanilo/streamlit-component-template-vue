@@ -1,18 +1,17 @@
 <template>
   <div class="wrapper">
     <span>
-      Hello, Streamlit! &nbsp;
+      Hello, {{args.name}}! &nbsp;
       <button v-on:click="onClicked()">Click Me!</button>
     </span>
   </div>
 </template>
 
 <script>
-import Vue from "vue";
-import { Streamlit } from "./streamlit";
-
+import { Streamlit } from "./streamlit/streamlit";
 export default {
   name: "MyComponent",
+  props: ["args"],
   data() {
     return {
       numClicks: 0
