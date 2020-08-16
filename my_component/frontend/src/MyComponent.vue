@@ -5,11 +5,11 @@
   </span>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from "vue";
+<script>
+import { ref } from "vue";
 import { Streamlit } from "./streamlit";
 
-export default defineComponent({
+export default {
   name: "MyComponent",
   props: ["args"], // Arguments that are passed to the plugin in Python are accessible in prop "args"
   setup() {
@@ -24,5 +24,5 @@ export default defineComponent({
       onClicked,
     };
   },
-});
+};
 </script>
