@@ -23,6 +23,7 @@ import {
   ref,
   defineComponent,
   onMounted,
+  onUpdated,
   onUnmounted,
   onErrorCaptured,
 } from "vue"
@@ -45,6 +46,15 @@ export default defineComponent({
     onMounted(() => {
       Streamlit.events.addEventListener(Streamlit.RENDER_EVENT, onRenderEvent)
       Streamlit.setComponentReady()
+    })
+    onUpdated(() => {
+      // If our slot threw an error, we display it in render(). In this
+      // case, the slot won't be mounted and therefore won't call
+      // `setFrameHeight` on its own. We do it here so that the rendered
+      // error will be visible.
+      if (componentError.value != "") {
+        Streamlit.setFrameHeight()
+      }
     })
     onUnmounted(() => {
       Streamlit.events.removeEventListener(
