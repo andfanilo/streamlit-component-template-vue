@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name="streamlit-custom-component",
-    version="0.0.1",
+    version="0.1.0",
     author="",
     author_email="",
     description="",

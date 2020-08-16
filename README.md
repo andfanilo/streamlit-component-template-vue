@@ -1,6 +1,6 @@
 # Streamlit Component template in Vue.js
 
-A Vue.js scoped slot which sends parameters from Streamlit Python script into `args` props of your component.
+Vue.js 3 template to build a Streamlit component. Uses Vue.js scoped slot to send parameters from Streamlit Python script into `args` props of your component.
 
 ## Setup
 
@@ -47,3 +47,4 @@ $ streamlit run my_component/__init__.py  # run the example
 - [Scoped slots](https://vuejs.org/v2/guide/components-slots.html#Scoped-Slots)
 - [Using Slots in Vue.js](https://www.smashingmagazine.com/2019/07/using-slots-vue-js/)
 - [Render Functions](https://vuejs.org/v2/guide/render-function.html)
+- [Build better higher-order components with Vue 3](https://blog.logrocket.com/build-better-higher-order-components-with-vue-3/)
