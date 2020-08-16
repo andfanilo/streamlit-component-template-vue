@@ -1,37 +1,43 @@
 <template>
-  <div class="wrapper">
-    <!-- 
-      Show a button and some text.
-      When the button is clicked, we'll increment our "numClicks" state
-      variable, and send its new value back to Streamlit, where it'll
-      be available to the Python program.
-    -->
-    <span>
-      Hello, {{args.name}}! &nbsp;
-      <button v-on:click="onClicked()">Click Me!</button>
-    </span>
-  </div>
+  <span>
+    Hello, Fanilo! &nbsp;
+    <button @click="onClicked">Click Me!</button>
+  </span>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent, ref, onMounted, onUpdated, onUnmounted } from "vue";
 import { Streamlit } from "./streamlit";
 
-export default {
+export default defineComponent({
   name: "MyComponent",
-  props: ["args"], // Arguments that are passed to the plugin in Python are accessible in props `args`. Here, we access the "name" arg.
-  data() {
+  setup() {
+    const numClicks = ref(0);
+    const onClicked = () => {
+      numClicks.value++;
+      Streamlit.setComponentValue(numClicks.value);
+    };
+
+    const onRender = (): void => {
+      Streamlit.setFrameHeight();
+    };
+
+    onMounted(() => {
+      Streamlit.events.addEventListener(Streamlit.RENDER_EVENT, onRender);
+      Streamlit.setComponentReady();
+      Streamlit.setFrameHeight();
+    });
+    onUpdated(() => {
+      Streamlit.setFrameHeight();
+    });
+    onUnmounted(() => {
+      Streamlit.events.removeEventListener(Streamlit.RENDER_EVENT, onRender);
+    });
+
     return {
-      numClicks: 0
+      numClicks,
+      onClicked,
     };
   },
-  methods: {
-    /** Click handler for our "Click Me!" button. */
-    onClicked: function() {
-      // Increment this.numClicks, and pass the new value back to
-      // Streamlit via `Streamlit.setComponentValue`.
-      this.numClicks++;
-      Streamlit.setComponentValue(this.numClicks);
-    }
-  }
-};
+});
 </script>
