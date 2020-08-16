@@ -12,15 +12,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import MyComponent from "./MyComponent.vue";
+import { defineComponent } from "vue"
+import MyComponent from "./MyComponent.vue"
 
 // "withStreamlitConnection" is a scoped slot. It bootstraps the
 // connection between your component and the Streamlit app, and handles
 // passing arguments from Python -> Component.
 //
 // You don't need to edit withStreamlitConnection (but you're welcome to!).
-import WithStreamlitConnection from "./streamlit/WithStreamlitConnection.vue";
+import WithStreamlitConnection from "./streamlit/WithStreamlitConnection.vue"
 
 export default defineComponent({
   name: "App",
@@ -28,7 +28,7 @@ export default defineComponent({
     MyComponent,
     WithStreamlitConnection,
   },
-});
+})
 </script>
 
 <style>

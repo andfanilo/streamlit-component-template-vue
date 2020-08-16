@@ -1,6 +1,6 @@
 # Streamlit Component template in Vue.js
 
-Vue.js 3 template for Streamlit component. Uses Vue.js scoped slot to send parameters from Streamlit Python script into `args` props of your component.
+Vue.js 3 template to build a Streamlit component. Uses Vue.js scoped slot to send parameters from Streamlit Python script into `args` props of your component.
 
 ## Setup
 
