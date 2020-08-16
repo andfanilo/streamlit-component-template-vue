@@ -1,38 +1,23 @@
 <template>
   <span>
-    Hello, Fanilo! &nbsp;
+    Hello, {{ args.name }}! &nbsp;
     <button @click="onClicked">Click Me!</button>
   </span>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted, onUpdated, onUnmounted } from "vue";
+import { defineComponent, ref } from "vue";
 import { Streamlit } from "./streamlit";
 
 export default defineComponent({
   name: "MyComponent",
+  props: ["args"], // Arguments that are passed to the plugin in Python are accessible in prop "args"
   setup() {
     const numClicks = ref(0);
     const onClicked = () => {
       numClicks.value++;
       Streamlit.setComponentValue(numClicks.value);
     };
-
-    const onRender = (): void => {
-      Streamlit.setFrameHeight();
-    };
-
-    onMounted(() => {
-      Streamlit.events.addEventListener(Streamlit.RENDER_EVENT, onRender);
-      Streamlit.setComponentReady();
-      Streamlit.setFrameHeight();
-    });
-    onUpdated(() => {
-      Streamlit.setFrameHeight();
-    });
-    onUnmounted(() => {
-      Streamlit.events.removeEventListener(Streamlit.RENDER_EVENT, onRender);
-    });
 
     return {
       numClicks,
