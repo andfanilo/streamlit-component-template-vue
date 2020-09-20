@@ -1,6 +1,6 @@
 # Streamlit Component template in Vue.js
 
-Vue.js 3 template to build a Streamlit component. Uses Vue.js scoped slot to send parameters from Streamlit Python script into `args` props of your component.
+Vue 3 template to build a Streamlit component. Uses Vue.js scoped slot to send parameters from Streamlit Python script into `args` props of your component.
 
 ## Setup
 
@@ -21,7 +21,7 @@ $ pip install streamlit # install streamlit
 ```
 $ cd my_component/frontend
 $ npm install    # Install npm dependencies
-$ npm run start  # Start the Webpack dev server
+$ npm run serve  # Start the Webpack dev server
 ```
 
 - From a separate terminal, run the template's Streamlit app:

@@ -2,7 +2,7 @@
  * Vue.js specific composables
  */
 import { onMounted, onUpdated } from "vue"
-import { Streamlit } from "./streamlit"
+import { Streamlit } from "streamlit-component-lib"
 
 export function useStreamlit() {
   /**

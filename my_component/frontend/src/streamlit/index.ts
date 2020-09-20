@@ -14,10 +14,4 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-// Workaround for type-only exports:
-// https://stackoverflow.com/questions/53728230/cannot-re-export-a-type-when-using-the-isolatedmodules-with-ts-3-2-2
-export { ArrowTable } from "./ArrowTable";
-export { Streamlit } from "./streamlit";
 export { useStreamlit } from "./StreamlitVue"
-export type { RenderData } from "./streamlit";

@@ -27,7 +27,7 @@ import {
   onUnmounted,
   onErrorCaptured,
 } from "vue"
-import { Streamlit, RenderData } from "./streamlit"
+import { Streamlit, RenderData } from "streamlit-component-lib"
 
 export default defineComponent({
   name: "WithStreamlitConnection",

@@ -7,7 +7,8 @@
 
 <script>
 import { ref } from "vue"
-import { Streamlit, useStreamlit } from "./streamlit"
+import { Streamlit } from "streamlit-component-lib"
+import { useStreamlit } from "./streamlit"
 
 export default {
   name: "MyComponent",
