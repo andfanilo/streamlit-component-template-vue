@@ -63,7 +63,7 @@ export default defineComponent({
       )
     })
     onErrorCaptured(err => {
-      componentError.value = <string>err
+      componentError.value = String(err)
     })
 
     return {
