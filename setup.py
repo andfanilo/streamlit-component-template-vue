@@ -1,7 +1,7 @@
 import setuptools
 
 setuptools.setup(
-    name="streamlit-custom-component",
+    name="streamlit-component-vue",
     version="0.1.0",
     author="",
     author_email="",
