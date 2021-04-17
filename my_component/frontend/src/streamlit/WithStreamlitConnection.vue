@@ -3,7 +3,7 @@
     <!-- 
       Error boundary. If our wrapped component threw an error, display it.
     -->
-    <div v-if="componentError != null">
+    <div v-if="componentError != ''">
       <h1 class="err__title">Component Error</h1>
       <div class="err__msg">{{componentError}}</div>
     </div>
@@ -12,7 +12,7 @@
       Don't render until we've gotten our first RENDER_EVENT from Streamlit.
       All components get disabled while the app is being re-run, and become re-enabled when the re-run has finished.
     -->
-    <slot v-else-if="renderData != null" :args="renderData.args" :disabled="renderData.disabled"></slot>
+    <slot v-else-if="renderData != undefined" :args="renderData.args" :disabled="renderData.disabled"></slot>
   </div>
 </template>
 
@@ -48,9 +48,7 @@ export default Vue.extend({
     Streamlit.setFrameHeight();
   },
   updated(): void {
-    if (this.componentError != "") {
-      Streamlit.setFrameHeight()
-    }
+    Streamlit.setFrameHeight()
   },
   destroyed(): void {
     Streamlit.events.removeEventListener(

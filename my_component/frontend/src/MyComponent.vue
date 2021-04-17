@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { Streamlit } from "./streamlit";
+import { Streamlit } from "streamlit-component-lib";
 
 export default {
   name: "MyComponent",
