@@ -1,6 +1,6 @@
 # Streamlit Component template in Vue.js
 
-A Vue.js scoped slot which sends parameters from Streamlit Python script into `args` props of your component.
+Vue 2 template to build a Streamlit component. Uses Vue.js scoped slot to send parameters from Streamlit Python script into `args` props of your component.
 
 ## Setup
 
@@ -36,6 +36,7 @@ $ streamlit run my_component/__init__.py  # run the example
 - Modify the frontend code at `my_component/frontend/src/MyComponent.vue`.
   - Parameters passed by Python script are made available in `args` props.
 - Modify the Python code at `my_component/__init__.py`.
+- Feel free to rename the `my_component` folder, `MyComponent.vue` file with its import in `App.vue`, and package name in `setup.py` and `package.json`.
 
 ## Resources
 
