@@ -17,27 +17,27 @@
 </template>
 
 <script lang="ts">
-import { Streamlit, RenderData } from "./streamlit";
+import Vue from 'vue';
+import { RenderData, Streamlit } from "streamlit-component-lib";
 
-export default {
+export default Vue.extend({
   name: "withStreamlitConnection",
-  data() {
-    return {
-      renderData: undefined as RenderData,
-      componentError: undefined as Error
-    };
-  },
+  data: () => ({
+    renderData: (undefined as unknown) as RenderData,
+    componentError: ""
+  }),
   methods: {
     /**
      * Streamlit is telling this component to redraw.
      * We save the render data in component's data.
      */
-    onRenderEvent: function(event) {
+    onRenderEvent: function(event: Event): void {
       const renderEvent = event as CustomEvent<RenderData>;
-      this.renderData = renderEvent.detail;
+      this.renderData = renderEvent.detail; 
+      this.componentError = ""
     }
   },
-  mounted() {
+  mounted(): void {
     // Set up event listeners, and signal to Streamlit that we're ready.
     // We won't render the component until we receive the first RENDER_EVENT.
     Streamlit.events.addEventListener(
@@ -47,20 +47,21 @@ export default {
     Streamlit.setComponentReady();
     Streamlit.setFrameHeight();
   },
-  updated() {
-    Streamlit.setFrameHeight();
+  updated(): void {
+    if (this.componentError != "") {
+      Streamlit.setFrameHeight()
+    }
   },
-  destroyed() {
+  destroyed(): void {
     Streamlit.events.removeEventListener(
       Streamlit.RENDER_EVENT,
       this.onRenderEvent
     );
   },
-  errorCaptured(err: Error) {
-    this.componentError = err;
-    this.renderData = undefined;
+  errorCaptured(err: Error): void {
+    this.componentError = String(err);
   }
-};
+})
 </script>
 
 <style scoped>
