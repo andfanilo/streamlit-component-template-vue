@@ -47,3 +47,4 @@ $ streamlit run my_component/__init__.py  # run the example
 - [Using Slots in Vue.js](https://www.smashingmagazine.com/2019/07/using-slots-vue-js/)
 - [Single File Components](https://v3.vuejs.org/guide/single-file-component.html)
 - [SFC Spec](https://vue-loader.vuejs.org/spec.html)
+· streamlit-component-template-vue
