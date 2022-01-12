@@ -39,7 +39,7 @@ def my_component(name, key=None):
     return component_value
 
 
-st.subheader("Component with constant args test3")
+st.subheader("Component with constant args test4")
 
 # Create an instance of our component with a constant `name` arg, and
 # print its output value.
@@ -47,7 +47,7 @@ num_clicks = my_component("World")
 st.markdown("You've clicked %s times!" % int(num_clicks))
 
 st.markdown("---")
-st.subheader("Component with variable args test 3")
+st.subheader("Component with variable args test 4")
 
 # Create a second instance of our component whose `name` arg will vary
 # based on a text_input widget.
